@@ -22,3 +22,6 @@ def update_torlist_periodically(self):
     r.set("last_list_update", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     for node in nodes:
         r.set(node, 1)
+
+
+update_torlist_periodically.apply_async()
