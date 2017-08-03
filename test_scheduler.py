@@ -1,5 +1,5 @@
 import unittest
-from  torlist_scheduler import celery, update_torlist_periodically
+from torlist_scheduler import update_torlist_periodically
 import redis
 
 
