@@ -22,8 +22,12 @@ def index():
 
 @app.route("/get_last_update")
 def get_last_update():
-    result = redis_store.get("last_list_update").decode("utf-8")
-    return jsonify({"result": result})
+    value = redis_store.get("last_list_update")
+    if value:
+        result = value.decode("utf-8")
+        return jsonify({"result": result})
+    else:
+        return jsonify({"result": {"error": "Server is not ready yet"}})
 
 
 @app.route("/is_contains_ip/<ip_address>")
