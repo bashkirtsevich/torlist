@@ -17,11 +17,11 @@ def update_torlist_periodically(self):
     url = "https://dan.me.uk/torlist/"
     nodes = urlopen(Request(url)).read().decode().split()
 
-    r = redis.StrictRedis(host="localhost", port=6379, db=1)
-    r.flushdb()
-    r.set("last_list_update", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    redis_store = redis.StrictRedis(host="localhost", port=6379, db=1)
+    redis_store.flushdb()
+    redis_store.set("last_list_update", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     for node in nodes:
-        r.set(node, 1)
+        redis_store.set(node, 1)
 
 
 update_torlist_periodically.apply_async()
