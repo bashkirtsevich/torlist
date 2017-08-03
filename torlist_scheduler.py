@@ -8,7 +8,7 @@ celery = Celery(__name__,
                 backend="redis://localhost:6379/0")
 
 
-@periodic_task(bind=True, run_every=timedelta(hours=1))
+@periodic_task(bind=True, max_retries=3, run_every=timedelta(hours=1))
 def update_torlist_periodically(self):
     from urllib.request import Request, urlopen
     from datetime import datetime
