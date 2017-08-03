@@ -1,1 +1,0 @@
-celery -A torlist_scheduler.celery worker -B
