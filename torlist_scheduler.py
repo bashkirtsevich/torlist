@@ -14,8 +14,7 @@ def update_torlist_periodically(self):
     from datetime import datetime
     import redis
 
-    # url = "https://dan.me.uk/torlist/"
-    url = "https://raw.githubusercontent.com/bashkirtsevich/autocode/master/nn_model/requirements.txt"
+    url = "https://dan.me.uk/torlist/"
     nodes = urlopen(Request(url)).read().decode().split()
 
     r = redis.StrictRedis(host="localhost", port=6379, db=1)
