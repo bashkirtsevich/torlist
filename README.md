@@ -1,6 +1,8 @@
 # TorList demo
 ## Требования
 * Python 3
+* Redis
+* Celery
 ## Установка
 ### Установка и запуск redis
 ```
